@@ -1,0 +1,173 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@theme inline {
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--bg-secondary);
+  --color-card-foreground: var(--text-primary);
+  --color-popover: var(--bg-primary);
+  --color-popover-foreground: var(--text-primary);
+  --color-primary: var(--accent);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--accent-subtle);
+  --color-secondary-foreground: var(--accent);
+  --color-muted: var(--bg-tertiary);
+  --color-muted-foreground: var(--text-secondary);
+  --color-accent: var(--accent-subtle);
+  --color-accent-foreground: var(--accent);
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: color-mix(in srgb, var(--accent) 35%, white);
+  --color-destructive: var(--error);
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+}
+
+:root {
+  --bg-primary: #fafaf8;
+  --bg-secondary: rgba(255, 255, 255, 0.86);
+  --bg-tertiary: #ece8e2;
+  --surface-strong: rgba(255, 255, 255, 0.95);
+  --text-primary: #2c2c2c;
+  --text-secondary: #6b6b6b;
+  --text-muted: #9c9891;
+  --accent: #5b6cf0;
+  --accent-hover: #4a5ad8;
+  --accent-subtle: rgba(91, 108, 240, 0.12);
+  --success: #6bc9a0;
+  --warning: #f0c75b;
+  --error: #e87272;
+  --border: rgba(100, 92, 82, 0.14);
+  --shadow-sm: 0 6px 20px rgba(37, 25, 16, 0.06);
+  --shadow-md: 0 14px 42px rgba(37, 25, 16, 0.1);
+  --shadow-lg: 0 20px 70px rgba(37, 25, 16, 0.16);
+  --radius: 22px;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(240, 199, 91, 0.16), transparent 28%),
+    radial-gradient(circle at top right, rgba(91, 108, 240, 0.14), transparent 24%),
+    linear-gradient(180deg, #fcfbf9 0%, #f6f2eb 100%);
+  color: var(--text-primary);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(91, 108, 240, 0.18);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-lg);
+}
+
+.maplibregl-map {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  font-family: inherit;
+}
+
+.maplibregl-ctrl-group {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  border-radius: 20px !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  box-shadow: var(--shadow-md) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.maplibregl-ctrl button {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.maplibregl-ctrl button .maplibregl-ctrl-icon {
+  opacity: 0.82;
+}
+
+.club-map-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.club-map-marker__pin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 4px solid rgba(255, 255, 255, 0.98);
+  border-radius: 999px 999px 999px 0;
+  background: var(--accent);
+  box-shadow: 0 14px 34px rgba(39, 31, 24, 0.18);
+  transform: rotate(-45deg);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.club-map-marker:hover .club-map-marker__pin,
+.club-map-marker:focus-visible .club-map-marker__pin {
+  transform: rotate(-45deg) scale(1.06);
+  box-shadow: 0 18px 38px rgba(39, 31, 24, 0.24);
+}
+
+.club-map-marker__center {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: white;
+  transform: rotate(45deg);
+}
+
+.club-map-marker--active .club-map-marker__pin {
+  background: linear-gradient(180deg, #5b6cf0 0%, #4457ef 100%);
+  box-shadow: 0 18px 42px rgba(74, 90, 216, 0.3);
+}
+
+.club-map-marker--draft .club-map-marker__pin {
+  background: linear-gradient(180deg, #f0c75b 0%, #f59e0b 100%);
+  box-shadow: 0 18px 42px rgba(240, 199, 91, 0.28);
+}

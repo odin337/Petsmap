@@ -1,0 +1,57 @@
+---
+description: PetsMap frontend patterns for Next.js, Tailwind, and interactive media UI
+alwaysApply: true
+globs:
+  - "app/**"
+  - "components/**"
+  - "lib/**"
+  - "types/**"
+---
+
+# Web Frontend Rules
+
+## Stack
+
+- Next.js 16 App Router
+- React 19
+- Tailwind CSS 4
+- MapLibre GL via `maplibre-gl`
+- Custom shadcn-style UI components in `components/ui`
+
+## UI Conventions
+
+- Keep the home screen full-height and map-first.
+- Use airy spacing, rounded surfaces, and soft glass panels from `app/globals.css`.
+- Primary CTA stays singular and visually dominant.
+- Modal card is the main detail surface; avoid creating competing side panels in the MVP.
+- The map should prefer Russian/local labels, stable tile loading, and minimal overlay clutter.
+
+## SEO Conventions
+
+- In `view` mode, role/type must render as technical `<h1>`.
+- In `view` mode, breed must render as technical `<h2>`.
+- Edit/create mode can use non-heading text for the shell title.
+
+## Safety Conventions
+
+- Only allow VK Video and RuTube URLs to become iframe embeds.
+- Do not render arbitrary iframe sources.
+- Document links must stay `http/https` only.
+- Demo gallery previews should use supported HTTPS image hosts to avoid runtime failures with image optimization rules.
+
+## State Conventions
+
+- Server page resolves initial query params.
+- Client shell owns selected pin, draft pin, and URL synchronization.
+- Use key-based remounting for modal reset when opening another pin or switching between create/view flows.
+- Keep custom map markers and source badge aligned with the current raster tile provider.
+
+## Styling Tokens
+
+- Accent: `--accent`
+- Accent hover: `--accent-hover`
+- Accent subtle: `--accent-subtle`
+- Text primary: `--text-primary`
+- Text secondary: `--text-secondary`
+- Border: `--border`
+- Surface shadows: `--shadow-sm`, `--shadow-md`, `--shadow-lg`

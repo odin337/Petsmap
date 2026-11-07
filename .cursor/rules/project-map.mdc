@@ -1,0 +1,105 @@
+---
+description: PetsMap project structure, entities, routes, and environment map
+alwaysApply: true
+---
+
+# PetsMap Project Map
+
+## Tree
+
+```text
+app/
+  globals.css
+  layout.tsx
+  page.tsx
+components/
+  map/
+    map-component.tsx
+    map-page-client.tsx
+  pins/
+    document-link.tsx
+    gallery-grid.tsx
+    pedigree-tree.tsx
+    pin-card.tsx
+    pin-form.tsx
+    rainbow-badge.tsx
+    upload-dropzone.tsx
+  ui/
+    badge.tsx
+    button.tsx
+    card.tsx
+    checkbox.tsx
+    dialog.tsx
+    input.tsx
+    label.tsx
+    scroll-area.tsx
+    select.tsx
+    separator.tsx
+    textarea.tsx
+data/
+  mockData.json
+doc/
+  petsmap-mvp.md
+lib/
+  mock-data.ts
+  pins.ts
+  utils.ts
+  video/
+    embed.ts
+memory/
+  24-03.md
+types/
+  pin.ts
+AGENTS.md
+components.json
+eslint.config.mjs
+next.config.ts
+package.json
+postcss.config.mjs
+tsconfig.json
+```
+
+## Pre-read Table
+
+| Area | Read first |
+|---|---|
+| App entry and routing | `app/page.tsx`, `app/layout.tsx` |
+| Map flow | `components/map/map-page-client.tsx`, `components/map/map-component.tsx` |
+| Modal card flow | `components/pins/pin-card.tsx`, `components/pins/pin-form.tsx` |
+| Media and pedigree | `components/pins/gallery-grid.tsx`, `components/pins/document-link.tsx`, `components/pins/pedigree-tree.tsx` |
+| Domain model | `types/pin.ts`, `lib/pins.ts`, `data/mockData.json` |
+| Safe embeds | `lib/video/embed.ts` |
+
+## Domain Entities
+
+| Entity | Source | Notes |
+|---|---|---|
+| `PinRecord` | `types/pin.ts` | Main card + map entity |
+| `PinRole` | `types/pin.ts` | One of: Заводчик, Питомник, Клуб, Хендлер, Ветеринар |
+| `PinCoordinates` | `types/pin.ts` | Lat/Lng for MapLibre markers |
+| `PedigreeTreeData` | `types/pin.ts` | Multi-generation pedigree structure |
+| `DysplasiaDocument` | `types/pin.ts` | Document metadata for result link block |
+| `GalleryImage` | `types/pin.ts` | Photo gallery item |
+
+## Routes
+
+| Route | Type | Notes |
+|---|---|---|
+| `/` | App Router page | Full-screen map and modal card shell |
+
+## Query Params
+
+| Param | Purpose |
+|---|---|
+| `pin` | Opens an existing pin card in view mode |
+| `draft` | Opens create mode when value is `new` |
+| `lat` | Draft latitude |
+| `lng` | Draft longitude |
+
+## API Groups
+
+Current MVP has no backend API. All data is loaded from `data/mockData.json`.
+
+## Environment Variables
+
+Current MVP requires no environment variables.
